@@ -56,3 +56,8 @@ h3 {
 #thanks {
   display: none;
 }
+
+img.remove {
+  width: 20px;
+  margin-left: 75%;
+}

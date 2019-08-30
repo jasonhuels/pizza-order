@@ -35,19 +35,28 @@ function Customer(firstName, lastName, orders) {
   this.orderNumber = 0;
 }
 
-////////////////// Pizzaria Object ////////////////////////
-function Pizzaria() {
+////////////////// Pizzeria Object ////////////////////////
+function Pizzeria() {
   this.orderItems = [],
+  this.itemNumber = 0,
   this.orderTotal = this.calculateTotal(),
   this.orderNumber = 1,
   this.orders = [""]; // fill 0 element with dummy so index matches orderNumber
 }
 
-Pizzaria.prototype.addCustomer = function(orderToAdd) {
-  this.orders.push(orderToAdd);
+Pizzeria.prototype.addItemToOrder = function(itemToAdd) {
+  itemToAdd.id = this.itemNumber;
+  this.itemNumber++;
+  this.orderItems.push(itemToAdd);
 }
 
-Pizzaria.prototype.calculateTotal = function() {
+Pizzeria.prototype.removeItemFromOrder = function(itemToRemove) {
+  console.log(this.orderItems);
+  this.orderItems.splice(itemToRemove, 1);
+  console.log(this.orderItems);
+}
+
+Pizzeria.prototype.calculateTotal = function() {
   var output = 0;
   for(let i=0; i<this.orderItems.length; i++) {
     output += this.orderItems[i].price;
@@ -55,9 +64,15 @@ Pizzaria.prototype.calculateTotal = function() {
   return output;
 }
 
+Pizzeria.prototype.newOrder = function() {
+  this.orders.push(this.orderItems);
+  this.orderItems = [];
+  this.orderNumber++;
+}
+
 /////////////////// UI ////////////////////
 $(function() {
-  var pizzaria = new Pizzaria();
+  var pizzeria = new Pizzeria();
 
   $("#new-order").submit(function(event) {
     event.preventDefault();
@@ -66,8 +81,8 @@ $(function() {
     var toppingCheckbox = $("input:checkbox[name=topping]:checked");
     var newToppings = [];
     var pizza;
-    var orderTotal = 0;
-    var orderNumber = pizzaria.orderNumber;
+    var orderNumber = pizzeria.orderNumber;
+    var trashIcon = '<img src="img/trash.png" alt="trashcan"  class="remove">';
 
     $("#thanks").hide();
 
@@ -77,14 +92,13 @@ $(function() {
     });
 
     pizza = new Pizza(newSize, newToppings);
-    pizzaria.orderItems.push(pizza);
-    orderTotal = pizzaria.calculateTotal();
-    console.log(pizzaria.calculateTotal());
+    pizzeria.addItemToOrder(pizza);
+    console.log(pizza.id);
 
     $("#orders").show();
-    $("#orders-list").append("<tr id=tr" + orderNumber + "> <td>" + pizza.sizeAsString() + "</td> <td>" + newToppings + "</td><td>" + pizza.price + "</td></tr>");
+    $("#orders-list").append("<tr id=" + pizza.id + " class=" + orderNumber + "> <td>" + pizza.sizeAsString() + "</td> <td>" + newToppings + "</td><td>" + pizza.price + trashIcon +"</td></tr>");
 
-    $("#table-total").text('$' + orderTotal.toFixed().toString())
+    $("#table-total").text('$' + pizzeria.calculateTotal());
     $("#new-order").trigger("reset");
   });
 
@@ -92,20 +106,33 @@ $(function() {
     event.preventDefault();
     var firstName = $("#first-name").val() || "Loyal";
     var lastName = $("#last-name").val() || "Customer";
-    var customer = new Customer(firstName, lastName, pizzaria.orderItems);
+    var customer = new Customer(firstName, lastName, pizzeria.orderItems);
 
-    customer.costOfOrders = pizzaria.calculateTotal();
-    customer.orderNumber = pizzaria.orderNumber;
-    pizzaria.orderNumber++;
+    customer.costOfOrders = pizzeria.calculateTotal();
+    customer.orderNumber = pizzeria.orderNumber;
+    pizzeria.newOrder();
 
     $("#table-total").html("");
-    $("#orders-list tr#tr"+customer.orderNumber).remove();
+    $("#orders-list tr."+customer.orderNumber).remove();
     $("#orders").hide();
     $("#thank-customer").text(customer.firstName + " " + customer.lastName);
     $("#order-number").text(customer.orderNumber);
     $("#thanks").show();
 
-
     $("#customer-info").trigger("reset");
   });
+
+  $(document).on("click", "img.remove",function() {
+    var idToRemove = this.parentNode.parentNode.id;
+    removeRow(idToRemove);
+    pizzeria.removeItemFromOrder(idToRemove);
+    $("#table-total").text('$' + pizzeria.calculateTotal());
+  });
+
 });
+
+function removeRow(rowToRemove) {
+  if(confirm("Remove from order?")) {
+    $("#orders-list tr#" + rowToRemove).remove();
+  }
+}
