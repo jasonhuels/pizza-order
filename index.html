@@ -12,10 +12,10 @@
 
       <div id="pizza">
         <form id="new-order">
-          <div class="row">
+          <div class="row order-row">
 
             <div class="well col-xs-3">
-              <label for="size">Size:</label>
+              <h3>Size:</h3>
               <select id="size" name="size" required>
                 <option value="0">Personal 8"</option>
                 <option value="1">Small 12"</option>
@@ -25,29 +25,32 @@
               </select>
             </div>
 
-            <div class="well col-xs-3">
-              <label for="cheese">Cheese:</label><br>
-              <input type="radio" name="topping" value="Regular Cheese" checked>Regular Chese<br>
-              <input type="radio" name="topping" value="No Cheese">No Cheese<br>
-              <input type="radio" name="topping" value="Extra Cheese">Extra Cheese<br>
-              <input type="checkbox" name="topping" value="Feta">Feta<br>
-              <input type="checkbox" name="topping" value="Goat Cheese">Goat Cheese<br>
-            </div>
-            <div class="well col-xs-3">
-              <label for="meat">Meat:</label><br>
-              <input type="checkbox" name="topping" value="Pepperoni">Pepperoni<br>
-              <input type="checkbox" name="topping" value="Sausage">Sausage<br>
-              <input type="checkbox" name="topping" value="Bacon">Bacon<br>
-              <input type="checkbox" name="topping" value="Linguica">Linguica<br>
-              <input type="checkbox" name="topping" value="Anchovies">Anchovies<br>
-            </div>
-            <div class="well col-xs-3">
-              <label for="vegetables">Vegetables:</label><br>
-              <input type="checkbox" name="topping" value="Tomato">Tomato<br>
-              <input type="checkbox" name="topping" value="Bell Pepper">Bell Pepper<br>
-              <input type="checkbox" name="topping" value="Artichoke">Artichoke<br>
-              <input type="checkbox" name="topping" value="Olives">Olives<br>
-              <input type="checkbox" name="topping" value="Onion">Onion<br>
+            <div class="well col-xs-9 row">
+              <h3>Toppings:</h3>
+              <div class="col-xs-4">
+                <label for="cheese">Cheese:</label><br>
+                <input type="radio" name="topping" value="Regular Cheese" checked>Regular Chese<br>
+                <input type="radio" name="topping" value="No Cheese">No Cheese<br>
+                <input type="radio" name="topping" value="Extra Cheese">Extra Cheese<br>
+                <input type="checkbox" name="topping" value="Feta">Feta<br>
+                <input type="checkbox" name="topping" value="Goat Cheese">Goat Cheese<br>
+              </div>
+              <div class=" col-xs-4">
+                <label for="meat">Meat:</label><br>
+                <input type="checkbox" name="topping" value="Pepperoni">Pepperoni<br>
+                <input type="checkbox" name="topping" value="Sausage">Sausage<br>
+                <input type="checkbox" name="topping" value="Bacon">Bacon<br>
+                <input type="checkbox" name="topping" value="Linguica">Linguica<br>
+                <input type="checkbox" name="topping" value="Anchovies">Anchovies<br>
+              </div>
+              <div class="col-xs-4">
+                <label for="vegetables">Vegetables:</label><br>
+                <input type="checkbox" name="topping" value="Tomato">Tomato<br>
+                <input type="checkbox" name="topping" value="Bell Pepper">Bell Pepper<br>
+                <input type="checkbox" name="topping" value="Artichoke">Artichoke<br>
+                <input type="checkbox" name="topping" value="Olives">Olives<br>
+                <input type="checkbox" name="topping" value="Onion">Onion<br>
+              </div>
             </div>
           </div>
 
@@ -55,9 +58,15 @@
         </form>
       </div>
       <div id="orders">
-        <ul id="orders-list">
+        <table id="orders-list">
+          <tr>
+            <th>Size</th>
+            <th>Toppings</th>
+            <th>Price</th>
+          </tr>
 
-        </ul>
+
+        </table>
 
         <div id="customer">
           <form class="customer-info">

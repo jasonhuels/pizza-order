@@ -21,7 +21,7 @@ Pizza.prototype.getPrice = function() {
 }
 
 Pizza.prototype.sizeAsString = function() {
-  var sizeStrings = ["Personal", "Small", "Medium", "Large", "X-Large"]
+  var sizeStrings = ["Personal 8\"", "Small 12\"", "Medium 15\"", "Large 18\"", "X-Large 22\""]
 
   return sizeStrings[this.size];
 }
@@ -53,7 +53,9 @@ $(function() {
 
     pizza = new Pizza(newSize, newToppings);
 
-    $("#orders-list").append("<li>" + pizza.sizeAsString() + " pizza with: " + newToppings + "</li>");
+    $("#orders").show();
+    $("#orders-list").append("<tr> <td>" + pizza.sizeAsString() + "</td> <td>" + newToppings + "</td><td>" + pizza.price + "</td></tr>");
+
     $("#new-order").trigger("reset");
   });
 });

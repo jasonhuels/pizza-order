@@ -1,3 +1,50 @@
 .fine-print {
   font-size: 8px;
 }
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  margin: 25px;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.order-row .well{
+  height: 250px;
+}
+
+h1 {
+  text-align: center;
+  background: -moz-linear-gradient(0deg, #00ff00 0%, #FFFFFF 32%, #FFFFFF 69%, #FF0000 100%); /* ff3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%, #00ff00), color-stop(32%, #FFFFFF), color-stop(69%, #FFFFFF), color-stop(100%, #FF0000)); /* safari4+,chrome */
+
+}
+
+h3 {
+  text-align: center;
+}
+
+#orders {
+  display: none;
+}
+
+#new-order {
+  background: -moz-linear-gradient(0deg, #00ff00 0%, #FFFFFF 32%, #FFFFFF 69%, #FF0000 100%); /* ff3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%, #00ff00), color-stop(32%, #FFFFFF), color-stop(69%, #FFFFFF), color-stop(100%, #FF0000)); /* safari4+,chrome */
+}
+
+.well {
+  /* background: transparent; */
+  background-color: rgba(255, 255, 255, 0.5);
+  border-style: dotted;
+}
