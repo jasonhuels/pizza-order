@@ -8,7 +8,7 @@ function Pizza(size, toppings) {
 
 Pizza.prototype.getPrice = function() {
   // basePrice based on size: [Personal, Small, Medium, Large, X-Large]
-  var basePrice = [10, 15, 20, 25, 30];
+  var basePrice = [10, 15, 18, 24, 30];
   var totalPrice = basePrice[this.size];
 
   for(let i=0; i<this.toppings.length; i++) {
@@ -38,5 +38,5 @@ function Customer(firstName, lastName, orders) {
 
 /////////////////// UI ////////////////////
 $(function() {
-  
+
 });

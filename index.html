@@ -8,7 +8,44 @@
 
   <body>
     <div class="container">
-      <h1>Jimmy Presto's (legally distinct) Pizza</h1>
+      <h1>Jimmy Presto's <span class="fine-print">(legally distinct)</span> Pizza</h1>
+
+      <div id="pizza">
+        <form id="new-order">
+          <label for="size">Size:</label>
+          <select class="size" name="size" required>
+            <option value="0">Personal 8"</option>
+            <option value="1">Small 12"</option>
+            <option value="2">Medium 15"</option>
+            <option value="3">Large 18"</option>
+            <option value="4">X-Large 22"</option>
+          </select>
+          <label for="toppings">Toppings:</label>
+          <select class="size" name="size">
+            <option></option>
+            <option value="1">No Cheese</option>
+            <option value="2">Extra Cheese</option>
+            <option value="3">Pepperoni</option>
+            <option value="4">Anchovies</option>
+          </select>
+          <button type="submit" id="add-pizza">Add to Order</button>
+        </form>
+      </div>
+      <div id="orders">
+        <ul id="orders-list">
+
+        </ul>
+
+        <div id="customer">
+          <form class="customer-info">
+            <label for="first-name">First Name:</label>
+            <input type="text" id="first-name" placeholder="First Name">
+            <label for="last-name">Last Name:</label>
+            <input type="text" id="last-name" placeholder="Last Name">
+            <button type="submit" name="button">Place Order</button>
+          </form>
+        </div>
+      </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
