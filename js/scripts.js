@@ -3,7 +3,7 @@
 function Pizza(size, toppings) {
   this.size = size,
   this.toppings = toppings,
-  this.price = 0;
+  this.price = this.getPrice(size, toppings);
 }
 
 Pizza.prototype.getPrice = function() {
@@ -12,7 +12,7 @@ Pizza.prototype.getPrice = function() {
   var totalPrice = basePrice[this.size];
 
   for(let i=0; i<this.toppings.length; i++) {
-    if(this.toppings[i] !== "No Cheese") {
+    if(this.toppings[i] !== "No Cheese" && this.toppings[i] !== "Regular Cheese") {
       totalPrice += 1;
     }
   }
@@ -38,5 +38,22 @@ function Customer(firstName, lastName, orders) {
 
 /////////////////// UI ////////////////////
 $(function() {
+  $("#new-order").submit(function(event) {
+    event.preventDefault();
+    var newSize = $("#size").val();
+    var cheeseRadio = $("input:radio[name=topping]:checked").val();
+    var toppingCheckbox = $("input:checkbox[name=topping]:checked");
+    var newToppings = [];
+    var pizza;
 
+    newToppings.push(cheeseRadio);
+    toppingCheckbox.each(function(){
+      newToppings.push($(this).val());
+    });
+
+    pizza = new Pizza(newSize, newToppings);
+
+    $("#orders-list").append("<li>" + pizza.sizeAsString() + " pizza with: " + newToppings + "</li>");
+    $("#new-order").trigger("reset");
+  });
 });

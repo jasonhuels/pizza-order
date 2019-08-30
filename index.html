@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/styles.css">
     <title></title>
   </head>
@@ -12,22 +12,45 @@
 
       <div id="pizza">
         <form id="new-order">
-          <label for="size">Size:</label>
-          <select class="size" name="size" required>
-            <option value="0">Personal 8"</option>
-            <option value="1">Small 12"</option>
-            <option value="2">Medium 15"</option>
-            <option value="3">Large 18"</option>
-            <option value="4">X-Large 22"</option>
-          </select>
-          <label for="toppings">Toppings:</label>
-          <select class="size" name="size">
-            <option></option>
-            <option value="1">No Cheese</option>
-            <option value="2">Extra Cheese</option>
-            <option value="3">Pepperoni</option>
-            <option value="4">Anchovies</option>
-          </select>
+          <div class="row">
+
+            <div class="well col-xs-3">
+              <label for="size">Size:</label>
+              <select id="size" name="size" required>
+                <option value="0">Personal 8"</option>
+                <option value="1">Small 12"</option>
+                <option value="2">Medium 15"</option>
+                <option value="3">Large 18"</option>
+                <option value="4">X-Large 22"</option>
+              </select>
+            </div>
+
+            <div class="well col-xs-3">
+              <label for="cheese">Cheese:</label><br>
+              <input type="radio" name="topping" value="Regular Cheese" checked>Regular Chese<br>
+              <input type="radio" name="topping" value="No Cheese">No Cheese<br>
+              <input type="radio" name="topping" value="Extra Cheese">Extra Cheese<br>
+              <input type="checkbox" name="topping" value="Feta">Feta<br>
+              <input type="checkbox" name="topping" value="Goat Cheese">Goat Cheese<br>
+            </div>
+            <div class="well col-xs-3">
+              <label for="meat">Meat:</label><br>
+              <input type="checkbox" name="topping" value="Pepperoni">Pepperoni<br>
+              <input type="checkbox" name="topping" value="Sausage">Sausage<br>
+              <input type="checkbox" name="topping" value="Bacon">Bacon<br>
+              <input type="checkbox" name="topping" value="Linguica">Linguica<br>
+              <input type="checkbox" name="topping" value="Anchovies">Anchovies<br>
+            </div>
+            <div class="well col-xs-3">
+              <label for="vegetables">Vegetables:</label><br>
+              <input type="checkbox" name="topping" value="Tomato">Tomato<br>
+              <input type="checkbox" name="topping" value="Bell Pepper">Bell Pepper<br>
+              <input type="checkbox" name="topping" value="Artichoke">Artichoke<br>
+              <input type="checkbox" name="topping" value="Olives">Olives<br>
+              <input type="checkbox" name="topping" value="Onion">Onion<br>
+            </div>
+          </div>
+
           <button type="submit" id="add-pizza">Add to Order</button>
         </form>
       </div>
