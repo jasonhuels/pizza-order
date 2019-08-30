@@ -14,7 +14,8 @@ Pizza.prototype.getPrice = function() {
 
   for(let i=0; i<this.toppings.length; i++) {
     if(this.toppings[i] !== "No Cheese" && this.toppings[i] !== "Regular Cheese") {
-      totalPrice += 1;
+      console.log((this.sizeIndex+1)*0.5);
+      totalPrice += (this.sizeIndex+1)*0.5;
     }
   }
 
@@ -40,7 +41,7 @@ Customer.prototype.orderString = function() {
   var output = "";
   for(let i=0; i<this.orders.length; i++) {
     if(this.orders[i]) {
-      output += "1 - " + this.orders[i].size + " pizza with " + this.orders[i].toppings  +  ":  $" + this.orders[i].price + "<br>";
+      output += "1 - " + this.orders[i].size + " pizza with " + this.orders[i].toppings  +  ":  $" + this.orders[i].price.toFixed(2) + "<br>";
     }
   }
 
@@ -99,7 +100,7 @@ $(function() {
     var trashIcon = '<img src="img/trash.png" alt="trashcan"  class="remove">';
     var orderTable = "";
 
-    $("#thanks").hide();
+    $("#thanks").slideUp();
 
     newToppings.push(cheeseRadio);
     toppingCheckbox.each(function(){
@@ -109,12 +110,12 @@ $(function() {
     pizza = new Pizza(newSize, newToppings);
     pizzeria.addItemToOrder(pizza);
 
-    orderTable = "<tr id=" + pizza.id + " class=" + orderNumber + "> <td>" + pizza.size + "</td> <td>" + newToppings + "</td><td>" + pizza.price + trashIcon +"</td></tr>"
+    orderTable = "<tr id=" + pizza.id + " class=" + orderNumber + "> <td>" + pizza.size + "</td> <td>" + newToppings + "</td><td>$" + pizza.price.toFixed(2) + trashIcon +"</td></tr>"
 
-    $("#orders").show();
+    $("#orders").slideDown();
     $("#orders-list").append(orderTable);
 
-    $("#table-total").text('$' + pizzeria.calculateTotal());
+    $("#table-total").text('$' + pizzeria.calculateTotal().toFixed(2));
     $("#new-order").trigger("reset");
   });
 
@@ -129,18 +130,18 @@ $(function() {
       orderString += "1 " + customer.orders[i].size + " pizza with " + customer.orders[i].toppings + "<br>";
     }
 
-    customer.costOfOrders = pizzeria.calculateTotal();
+    customer.costOfOrders = pizzeria.calculateTotal().toFixed(2);
     customer.orderNumber = pizzeria.orderNumber;
     pizzeria.newOrder();
 
     $("#table-total").html("");
     $("#orders-list tr."+customer.orderNumber).remove();
-    $("#orders").hide();
+    $("#orders").slideUp();
     $("#thank-customer").text(customer.firstName + " " + customer.lastName);
     $("#order-number").text(customer.orderNumber);
     $("#review-order").html(customer.orderString());
     $("#final-price").text(customer.costOfOrders);
-    $("#thanks").show();
+    $("#thanks").slideDown();
 
     $("#customer-info").trigger("reset");
   });
@@ -150,7 +151,7 @@ $(function() {
     var confirmation =   removeRow(idToRemove);
     if(confirmation) {
       pizzeria.removeItemFromOrder(idToRemove);
-      $("#table-total").text('$' + pizzeria.calculateTotal());
+      $("#table-total").text('$' + pizzeria.calculateTotal().toFixed(2));
 
     }
   });
