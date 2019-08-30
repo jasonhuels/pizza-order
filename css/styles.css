@@ -1,3 +1,4 @@
+
 .fine-print {
   font-size: 8px;
 }
@@ -21,6 +22,10 @@ tr:nth-child(even) {
 
 .order-row .well{
   height: 250px;
+}
+
+#orders {
+  margin-bottom: 50px;
 }
 
 h1 {
@@ -60,4 +65,8 @@ h3 {
 img.remove {
   width: 20px;
   margin-left: 75%;
+}
+
+#jp {
+  float: right;
 }
