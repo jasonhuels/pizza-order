@@ -83,6 +83,7 @@ $(function() {
     var pizza;
     var orderNumber = pizzeria.orderNumber;
     var trashIcon = '<img src="img/trash.png" alt="trashcan"  class="remove">';
+    var orderTable = "";
 
     $("#thanks").hide();
 
@@ -93,10 +94,11 @@ $(function() {
 
     pizza = new Pizza(newSize, newToppings);
     pizzeria.addItemToOrder(pizza);
-    console.log(pizza.id);
+
+    orderTable = "<tr id=" + pizza.id + " class=" + orderNumber + "> <td>" + pizza.sizeAsString() + "</td> <td>" + newToppings + "</td><td>" + pizza.price + trashIcon +"</td></tr>"
 
     $("#orders").show();
-    $("#orders-list").append("<tr id=" + pizza.id + " class=" + orderNumber + "> <td>" + pizza.sizeAsString() + "</td> <td>" + newToppings + "</td><td>" + pizza.price + trashIcon +"</td></tr>");
+    $("#orders-list").append(orderTable);
 
     $("#table-total").text('$' + pizzeria.calculateTotal());
     $("#new-order").trigger("reset");
@@ -117,6 +119,8 @@ $(function() {
     $("#orders").hide();
     $("#thank-customer").text(customer.firstName + " " + customer.lastName);
     $("#order-number").text(customer.orderNumber);
+    $("#review-order").append(customer.orders)
+    $("#final-price").text(customer.costOfOrders);
     $("#thanks").show();
 
     $("#customer-info").trigger("reset");
