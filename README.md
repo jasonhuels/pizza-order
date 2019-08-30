@@ -1,36 +1,37 @@
-# _Title_
+# _Pizza Order_
 
-#### _Brief Description, 28-Aug-2019_
+#### _Website where customers can order a customized pizza and be given the total cost, 30-Aug-2019_
 
 #### By _**Jason Huels**_
 
 ## Description
 
-_Description_
+_Website where customers can order a pizza with toppings and size of their choosing and be given the total cost _
 
 ## Specifications
 
 | Behavior | Input | Output|
 |:------|:---------:|:------:|
-|Describe behavior | expected input | desired output |
+|Program receives a blank order | "" | "Please choose a size of pizza" |
+|Program receives pizza size with no toppings | "Large" | "Your large pizza will be ($price)" |
+|Program receives pizza toppings but no size | "Pepperoni, Extra Cheese" | "Please choose a size of pizza" |
+|Program receives order with size and a single topping | "Large: Pepperoni" |"Your Large pizza with Pepperoni will be ($price)" |
+|Program receives order with size and multiple toppings | "Large: Pepperoni, Extra Cheese" |"Your Large pizza with Pepperoni and Extra Cheese will be ($price)" |
+|Program receives multiple orders with same sizes and toppings | "Large: Pepperoni, Extra Cheese; Large: Pepperoni, Extra Cheese" |"Your 2 Large pizzas with Pepperoni and Extra Cheese will be ($price)" |
+|Program receives multiple orders with differing sizes and toppings | "Small: Pepperoni, No Cheese; Large: Pepperoni, Extra Cheese" |"Your pizzas 1 small with pepperoni, no cheese and 1 large with Pepperoni and Extra Cheese will be ($price)" |
 
 ## Setup/Installation Requirements
 
-* _This is a great place_
-* _to list setup instructions_
-* _in a simple_
-* _easy-to-understand_
-* _format_
-
-_{Leave nothing to chance! You want it to be easy for potential users, employers and collaborators to run your app. Do I need to run a server? How should I set up my databases? Is there other code this app depends on?}_
+*_Clone this repository_
+*_Open index.html in browser of your choosing_
 
 ## Known Bugs
 
-_{Are there issues that have not yet been resolved that you want to let users know you know?  Outline any issues that would impact use of your application.  Share any workarounds that are in place. }_
+_N/A_
 
 ## Support and contact details
 
-_{Let people know what to do if they run into any issues or have questions, ideas or concerns.  Encourage them to contact you or make a contribution to the code.}_
+_jasonhuels@yahoo.com_
 
 ## Technologies Used
 
