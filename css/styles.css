@@ -52,3 +52,7 @@ h3 {
 #table-total {
   font-weight: bold;
 }
+
+#thanks {
+  display: none;
+}

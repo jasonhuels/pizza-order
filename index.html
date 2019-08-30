@@ -58,6 +58,7 @@
         </form>
       </div>
       <div id="orders">
+        <h2>Review Order</h2>
         <table id="orders-list">
           <tr>
             <th>Size</th>
@@ -74,12 +75,17 @@
         <div id="customer">
           <form id="customer-info">
             <label for="first-name">First Name:</label>
-            <input type="text" id="first-name" placeholder="First Name">
+            <input type="text" id="first-name" placeholder="First Name" required>
             <label for="last-name">Last Name:</label>
-            <input type="text" id="last-name" placeholder="Last Name">
+            <input type="text" id="last-name" placeholder="Last Name" required>
             <button type="submit" name="button">Place Order</button>
           </form>
         </div>
+      </div>
+      <div id="thanks">
+        <h3>Thank You, <span id="thank-customer"></span>!</h3>
+        <h4>Your order number is: <span id="order-number"></span></h4>
+        <h4>Your order will be ready in 15 minutes (or it's free)</h4>
       </div>
     </div>
 

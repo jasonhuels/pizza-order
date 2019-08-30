@@ -67,6 +67,9 @@ $(function() {
     var newToppings = [];
     var pizza;
     var orderTotal = 0;
+    var orderNumber = pizzaria.orderNumber;
+
+    $("#thanks").hide();
 
     newToppings.push(cheeseRadio);
     toppingCheckbox.each(function(){
@@ -79,7 +82,7 @@ $(function() {
     console.log(pizzaria.calculateTotal());
 
     $("#orders").show();
-    $("#orders-list").append("<tr> <td>" + pizza.sizeAsString() + "</td> <td>" + newToppings + "</td><td>" + pizza.price + "</td></tr>");
+    $("#orders-list").append("<tr id=tr" + orderNumber + "> <td>" + pizza.sizeAsString() + "</td> <td>" + newToppings + "</td><td>" + pizza.price + "</td></tr>");
 
     $("#table-total").text('$' + orderTotal.toFixed().toString())
     $("#new-order").trigger("reset");
@@ -91,8 +94,18 @@ $(function() {
     var lastName = $("#last-name").val() || "Customer";
     var customer = new Customer(firstName, lastName, pizzaria.orderItems);
 
-    customer.orderTotal = pizzaria.calculateTotal();
+    customer.costOfOrders = pizzaria.calculateTotal();
     customer.orderNumber = pizzaria.orderNumber;
     pizzaria.orderNumber++;
+
+    $("#table-total").html("");
+    $("#orders-list tr#tr"+customer.orderNumber).remove();
+    $("#orders").hide();
+    $("#thank-customer").text(customer.firstName + " " + customer.lastName);
+    $("#order-number").text(customer.orderNumber);
+    $("#thanks").show();
+
+
+    $("#customer-info").trigger("reset");
   });
 });
