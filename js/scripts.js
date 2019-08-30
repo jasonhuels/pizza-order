@@ -21,18 +21,11 @@ Pizza.prototype.getPrice = function() {
   return totalPrice;
 }
 
-Pizza.prototype.sizeAsString = function() {
-  var sizeStrings = ["Personal 8\"", "Small 12\"", "Medium 15\"", "Large 18\"", "X-Large 22\""]
-
-  return sizeStrings[this.size];
-}
-
 Pizza.prototype.getSizeIndex = function() {
   var sizeStrings = ["Personal 8\"", "Small 12\"", "Medium 15\"", "Large 18\"", "X-Large 22\""]
 
   return sizeStrings.indexOf(this.size);
 }
-
 
 ////////////////// Customer Object ////////////////////////
 function Customer(firstName, lastName, orders) {
@@ -154,15 +147,20 @@ $(function() {
 
   $(document).on("click", "img.remove",function() {
     var idToRemove = this.parentNode.parentNode.id;
-    removeRow(idToRemove);
-    pizzeria.removeItemFromOrder(idToRemove);
-    $("#table-total").text('$' + pizzeria.calculateTotal());
-  });
+    var confirmation =   removeRow(idToRemove);
+    if(confirmation) {
+      pizzeria.removeItemFromOrder(idToRemove);
+      $("#table-total").text('$' + pizzeria.calculateTotal());
 
+    }
+  });
 });
 
 function removeRow(rowToRemove) {
-  if(confirm("Remove from order?")) {
+  var confirmation = confirm("Remove from order?");
+  if(confirmation) {
     $("#orders-list tr#" + rowToRemove).remove();
   }
+
+  return confirmation;
 }
