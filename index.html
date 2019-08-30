@@ -3,7 +3,7 @@
   <head>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/styles.css">
-    <title></title>
+    <title>Take Out Order</title>
   </head>
 
   <body>
@@ -64,12 +64,15 @@
             <th>Toppings</th>
             <th>Price</th>
           </tr>
-
-
+          <tfoot>
+            <td></td>
+            <td></td>
+            <td><strong>Total:</strong> <span id="table-total"></span></td>
+          </tfoot>
         </table>
 
         <div id="customer">
-          <form class="customer-info">
+          <form id="customer-info">
             <label for="first-name">First Name:</label>
             <input type="text" id="first-name" placeholder="First Name">
             <label for="last-name">Last Name:</label>
