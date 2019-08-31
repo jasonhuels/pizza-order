@@ -14,7 +14,6 @@ Pizza.prototype.getPrice = function() {
 
   for(let i=0; i<this.toppings.length; i++) {
     if(this.toppings[i] !== "No Cheese" && this.toppings[i] !== "Regular Cheese") {
-      console.log((this.sizeIndex+1)*0.5);
       totalPrice += (this.sizeIndex+1)*0.5;
     }
   }
@@ -64,9 +63,7 @@ Pizzeria.prototype.addItemToOrder = function(itemToAdd) {
 }
 
 Pizzeria.prototype.removeItemFromOrder = function(itemToRemove) {
-  console.log(this.orderItems, itemToRemove);
   this.orderItems.splice(itemToRemove, 1, "");
-  console.log(this.orderItems);
 }
 
 Pizzeria.prototype.calculateTotal = function() {
