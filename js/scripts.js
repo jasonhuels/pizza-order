@@ -64,6 +64,13 @@ Pizzeria.prototype.addItemToOrder = function(itemToAdd) {
 
 Pizzeria.prototype.removeItemFromOrder = function(itemToRemove) {
   this.orderItems.splice(itemToRemove, 1, "");
+  for(let i=0; i<this.orderItems.length; i++) {
+    if(this.orderItems[i]) {
+      break;
+    } else if(i === this.orderItems.length-1) {
+      $("#orders").slideUp();
+    }
+  }
 }
 
 Pizzeria.prototype.calculateTotal = function() {
