@@ -86,6 +86,8 @@ img.remove {
 #jp {
   float: right;
   width: 200px;
+  border: solid red 3px;
+  border-radius: 100px;
 }
 
 .well#orders {
