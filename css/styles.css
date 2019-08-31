@@ -34,7 +34,10 @@ tfoot tr td {
 }
 
 .order-row .well{
-  height: 250px;
+  height: 275px;
+}
+.col-xs-4 {
+  padding-bottom: 15px;
 }
 
 #orders {
